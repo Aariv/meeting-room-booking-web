@@ -24,7 +24,7 @@ public class MeetingRoomService {
 		return (List<MeetingRoom>) roomrepo.findAll();
 	}
 	
-	public MeetingRoom addUser(MeetingRoom meetingroom) {
+	public MeetingRoom addRoom(MeetingRoom meetingroom) {
 		meetingroom = roomrepo.save(meetingroom);
 		
 		return meetingroom;
