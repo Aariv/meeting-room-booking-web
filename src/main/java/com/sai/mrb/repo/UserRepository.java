@@ -7,5 +7,9 @@ import com.sai.mrb.model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
+	
+	User findByname(String name);
+	
+	User findByemailid(String emailid);
 
 }

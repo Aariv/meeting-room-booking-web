@@ -3,10 +3,13 @@
  */
 package com.sai.mrb.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,18 +26,31 @@ public class User {
 	private Integer id;
 	private String name;
 	private String emailid;
+	private String password;
 	private String role;
 	private String team;
+	
+	@OneToMany(mappedBy = "user")
+	private Set<BookMeeting> bookMeeting;
+	
+	public Set<BookMeeting> getBookMeeting() {
+		return bookMeeting;
+	}
+
+	public void setBookMeeting(Set<BookMeeting> bookMeeting) {
+		this.bookMeeting = bookMeeting;
+	}
 
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Integer id, String name, String emailid, String role, String team) {
+	public User(Integer id, String name, String emailid, String password, String role, String team) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.emailid = emailid;
+		this.password = password;
 		this.role = role;
 		this.team = team;
 	}
@@ -63,6 +79,14 @@ public class User {
 		this.emailid = emailid;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getRole() {
 		return role;
 	}
@@ -81,7 +105,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", emailid=" + emailid + ", role=" + role + ", team=" + team + "]";
+		return "User [id=" + id + ", name=" + name + ", emailid=" + emailid + ", password=" + password + ", role="
+				+ role + ", team=" + team + "]";
 	}
 
 }

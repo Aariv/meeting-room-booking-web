@@ -3,10 +3,13 @@
  */
 package com.sai.mrb.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author sv
@@ -21,6 +24,18 @@ public class MeetingRoom {
 	private String name;
 	private String location;
 	private String floor;
+	
+	@OneToMany(mappedBy = "meetingRoom")
+	private Set<BookMeeting> bookMeeting;
+	
+
+	public Set<BookMeeting> getBookMeeting() {
+		return bookMeeting;
+	}
+
+	public void setBookMeeting(Set<BookMeeting> bookMeeting) {
+		this.bookMeeting = bookMeeting;
+	}
 
 	public MeetingRoom() {
 		// TODO Auto-generated constructor stub
