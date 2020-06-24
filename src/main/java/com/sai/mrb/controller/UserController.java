@@ -3,15 +3,12 @@
  */
 package com.sai.mrb.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.sai.mrb.model.User;
 import com.sai.mrb.service.UserService;
 
@@ -21,22 +18,21 @@ import com.sai.mrb.service.UserService;
  */
 
 @Controller
-@RequestMapping("/users")
 public class UserController {
-	
+
 	@Autowired
 	UserService userService;
 	
-	@GetMapping()
-	public List<User> getAll(){
-		System.out.println("Inside the User Controller");
-		
-		return userService.listAll();
+	@GetMapping("/add")
+	public String listUsers(ModelMap modelMap) {
+		modelMap.put("userlist", userService.listAll());
+		return "add";
 	}
-	
+
 	@PostMapping("/adduser")
-	public User add(@RequestBody User user) {
-		return userService.addUser(user);
+	public String add(@ModelAttribute("user") User user) {
+		userService.addUser(user);
+		return "admin";
 	}
 
 }

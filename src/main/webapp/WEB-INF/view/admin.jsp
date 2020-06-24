@@ -15,9 +15,13 @@
 	%>
 	<div align="center">
 		<h1>Welcome Admin</h1>
-	</div>
-	<form action="logout">
+		<h3> Please Select the Required Option</h3>
+		<a href="add">Add User</a>
+		    <a href="meetingroom">Add Meeting Room</a>
+		<br><br>
+		<form action="logout">
 		<input type="submit" value="Logout">
 	</form>
+	</div>
 </body>
 </html>
