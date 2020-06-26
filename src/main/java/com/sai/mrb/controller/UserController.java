@@ -28,6 +28,11 @@ public class UserController {
 		modelMap.put("userlist", userService.listAll());
 		return "add";
 	}
+	
+	@GetMapping("/backuser")
+	public String back() {
+		return "admin";
+	}
 
 	@PostMapping("/adduser")
 	public String add(@ModelAttribute("user") User user) {

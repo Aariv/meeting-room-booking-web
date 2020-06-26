@@ -10,7 +10,7 @@
 <div align="center">
 <h1> Welcome to Meeting Room Booking System</h1>
 <form action="login" method="post">
-Enter the Username <input type="text" id="username" name="username">
+Enter the Username <input type="text" id="name" name="name">
 <br><br>
 Enter the Password <input type="password" id ="password" name="password">
 <br><br>

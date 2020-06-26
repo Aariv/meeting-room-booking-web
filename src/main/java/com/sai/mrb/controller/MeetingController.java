@@ -9,8 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import com.sai.mrb.model.MeetingRoom;
 import com.sai.mrb.service.MeetingRoomService;
 
@@ -28,6 +26,11 @@ public class MeetingController {
 	public String getAll(ModelMap modelMap){
 		modelMap.put("roomlist", meetingRoomService.listAll());
 		return "meetingroom";
+	}
+	
+	@GetMapping("/backmeeting")
+	public String back() {
+		return "admin";
 	}
 	
 	@PostMapping("/addroom")

@@ -4,7 +4,9 @@
 package com.sai.mrb.controller;
 
 import java.util.Map;
+
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.sai.mrb.model.User;
+
+import com.sai.mrb.model.Login;
 import com.sai.mrb.service.UserService;
 
 /**
@@ -33,15 +36,17 @@ public class LoginController {
 	}
 
 	@PostMapping(path = "/login")
-	public String validateandLogin( @RequestParam("username") String name, @RequestParam("password") String password,
-			Model m,@ModelAttribute("booking") User user, HttpSession httpSession) {
+	public String validateandLogin( @RequestParam("name") String name, @RequestParam("password") String password,
+			Model m,@ModelAttribute("booking") Login login, HttpSession httpSession) {
 		String flag = "index";
+		System.out.println(login.getName());
 		if (name.equalsIgnoreCase("admin") && password.equals("admin")) {
 			httpSession.setAttribute("name", "admin");
 			flag = "admin";
 			System.out.println("Inside Admin");
 		}
-		else if (validateUser(user)) {
+		else if (validateUser(login)) {
+			httpSession.setAttribute("name", login.getName());
 			flag = "user";
 			System.out.println("Inside User");
 		}
@@ -65,9 +70,9 @@ public class LoginController {
 		return "meetingroom";
 	}
 
-	private boolean validateUser(User user) {
+	private boolean validateUser(Login login) {
 		// TODO Auto-generated method stub
-		return userService.validateUser(user);
+		return userService.validateUser(login);
 	}
 
 }

@@ -36,8 +36,11 @@ Select the Team:<select name="team" id="team">
   <option value="devops" label="Devops" > Devops </option>
   <option value="EQPT" label="EQPT" > EQPT </option>
 </select>   <br><br>
-
 <input type="submit" value="Add User">
+</form>
+<br><br>
+<form action="backuser">
+<input type="submit" value="Back">
 </form>
 </div>
 <div align="center">
